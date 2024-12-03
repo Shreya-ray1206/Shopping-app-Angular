@@ -45,44 +45,46 @@ export class BodyComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
-    this.loading = true;
-    this.loadInitialProducts();
+ ngOnInit(): void {
+  this.loading = true;
 
-    this.route.queryParams.subscribe(params => {
-      this.selectedCategory = params['category'];  // Get the selected category from the URL
+  // Subscribe to queryParams for category changes
+  this.route.queryParams.subscribe((params) => {
+    this.selectedCategory = params['category'];
+    if (this.selectedCategory) {
+      console.log(`Fetching products for selected category: ${this.selectedCategory}`);
+      this.fetchCategoryProducts(this.selectedCategory);
+    } else {
+      console.log('No category selected. Loading initial products.');
+      this.loadInitialProducts();
+    }
+  });
 
-      if (this.selectedCategory) {
-        this.fetchCategoryProducts(this.selectedCategory);  // Fetch products for the selected category
-      } else {
-        this.loadInitialProducts();  // If no category, load all products
-      }
-    });
+  // Subscribe to search results
+  this.searchService.searchResults$.subscribe((results) => {
+    this.productsList = results.length ? results : [];
+    if (results.length === 0) {
+      console.log('No search results found. Clearing productsList.');
+    }
+    this.loading = false;
+  });
 
-    // Fetch existing cart from localStorage
-    const storedCart = JSON.parse(localStorage.getItem('cart') || '{}');
-    this.cart = storedCart;
+  // Image slider logic
+  setInterval(() => {
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.imageArray.length;
+  }, 1500);
 
-    this.searchService.searchResults$.subscribe((results) => {
-      if (results.length) {
-        this.productsList = results; // Update product list with search results
-      } else {
-        this.productsList =[]
-      }
-    });
+  // Load cart from localStorage
+  const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  this.cart = Array.isArray(storedCart) ? storedCart : [];
+}
 
-    setInterval(() => {
-      this.currentImageIndex = (this.currentImageIndex + 1) % this.imageArray.length;
-    }, 1500);
-   
-  }
-
+  
   fetchCategoryProducts(category: string): void {
     this.http.get<{ products: Product[] }>(`https://dummyjson.com/products/category/${category}`).subscribe(
       (response) => {
         this.productsList = response.products;
-        this.searchService.setSearchResults(this.productsList);
-      },
+        this.searchService.setSearchResults(this.productsList);      },
       (error) => {
         console.error('Error fetching category products:', error);
       }
@@ -90,7 +92,9 @@ export class BodyComponent implements OnInit {
   }
 
   loadInitialProducts() {
+    this.loading = true;
     this.http.get<{ products: Product[] }>('https://dummyjson.com/products').subscribe(
+
       (response) => {
         setTimeout(() => {
           this.productsList = response.products.map((product) => ({

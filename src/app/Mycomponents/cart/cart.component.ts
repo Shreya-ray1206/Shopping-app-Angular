@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [ CommonModule],
+  imports: [ CommonModule, DialogModule, ButtonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
    cartItems : any = [];
    cart : any={};
+   visible: boolean = false;
 
    ngOnInit(): void{
 
@@ -68,5 +71,10 @@ export class CartComponent {
     ///For now just deleted the item 
     console.log('Item saved for later:', item);
     this.deleteItem(item);
+   }
+
+   showDialog() {
+    this.visible = true;
+    console.log('Dialog visibility set to true');
    }
 }

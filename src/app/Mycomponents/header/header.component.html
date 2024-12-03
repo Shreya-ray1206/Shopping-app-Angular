@@ -22,7 +22,6 @@
     <div 
     *ngFor="let category of categories" 
      class="feature-category-card" 
-     [ngClass]="{'selected-category': category.name === selectedCategory}"
      (click) ="onSelectCategory(category.name)">
       <p 
       [ngClass]="{'selected-category': category.name === selectedCategory}">{{category.name}}</p>

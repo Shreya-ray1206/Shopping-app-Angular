@@ -11,7 +11,7 @@ import { SearchService } from '../../services/search.services';
   standalone: true,
   imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'] // Fixed property name
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   searchQuery: string = '';
@@ -30,20 +30,18 @@ export class HeaderComponent {
     this.fetchInitialProducts();
   }
 
-  fetchInitialProducts() {
-
-    fetch('https://dummyjson.com/products')
-      .then((response) => response.json())
-      .then((data) => {
-        this.productList = data.products;
-        this.originalProductList = [...this.productList]; 
+  fetchInitialProducts(): void {
+    this.searchService.fetchInitialProducts().subscribe({
+      next: (data) => {
+        this.productList = data.products;  // Assuming 'products' is the key in response
+        this.originalProductList = [...this.productList];
         console.log('Fetched products:', this.productList);
-      })
-      .catch((error) => {
+      },
+      error: (error) => {
         console.error('Error fetching products', error);
-      });
+      }
+    });
   }
-
 
   searchProducts() {
     if (!this.searchQuery.trim()) {
@@ -86,26 +84,24 @@ export class HeaderComponent {
   }
 
   onSelectCategory(category: string) {
-    this.selectedCategory = category
-    console.log(`The category selected is - ${this.selectedCategory}`);
-
-
-    // Redirect to home page and pass selected category as a query parameter
-  this.router.navigate(['/'], { queryParams: { category: category } });
+    this.selectedCategory = category;
+  console.log(`Selected category: ${category}`);
   
+  this.searchService.clearSearchResults();
+  // Redirect to home with category as a query parameter
+  this.router.navigate(['/'], { queryParams: { category } });
 
-    this.productList = [];  
+  // Update service with loading state (optional)
+  }
+
+  fetchCategoryProducts(category: string): void {
+    // Fetch products based on the selected category (this could also be handled in BodyComponent)
     fetch(`https://dummyjson.com/products/category/${category}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.products && data.products.length > 0) {
-          this.productList = data.products; // Update the products list
-          this.searchService.setSearchResults(this.productList);
-        } else {
-          this.productList = []; // No products for this category
-          this.searchService.setSearchResults(this.productList);
-        }
-     })
+        this.searchService.setSearchResults(data.products);
+        console.log('Fetched products for category:', data.products);
+      })
       .catch((error) => {
         console.error('Error fetching category products', error);
       });
