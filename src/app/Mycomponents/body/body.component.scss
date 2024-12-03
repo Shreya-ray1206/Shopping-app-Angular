@@ -1,0 +1,242 @@
+.body-container{
+    // margin-left: 10vw;
+    // margin-top: 1.5vw;
+    display: flex;
+    margin-top: 1vw;
+    margin-left: 10vw;
+    flex-direction: column;
+    width: 80%;
+}
+
+.shimmer-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1.6vw;
+    justify-content: center;
+    gap: 0.7vw;
+    width: 100%;
+    height: auto;
+    background-color: #f4f5f4;
+  }
+  
+  .item-grid {
+    display: flex;
+    flex-wrap: wrap; /* Maintain wrapping for items */
+    justify-content: center;
+    gap: 0.7vw; /* Match the gap for consistency */
+    width: 100%;
+    height: auto;
+  }
+  
+
+.image-container{
+    margin-left:5%;
+
+    img{
+        width: 90%;
+        border-radius: 1vw;
+        height: 35vh;
+    }
+}
+.item-container{
+    display: flex;
+    flex-wrap: wrap; /* Ensure wrapping */
+    justify-content: center;
+    background-color: #f4f5f4;
+    align-items: center;
+    padding: 0.5vw;
+    margin: 0%;
+    height: auto;
+    gap: 0.7vw; /* Set gap between items */
+    width: 100%;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2);
+    
+    .no-products-container {
+        text-align: center;
+        font-size: 18px;
+        color: #888;
+        padding: 20px;
+      }
+
+   .item-card{
+        display: flex;
+        flex-direction: column;
+        // border: 0.1vw solid black;
+        justify-content: center;
+        background-color: white;
+        width: 19%;
+        height: auto;
+        padding: 0.5vw 1vw;
+        cursor: pointer;
+        margin-left: 1vw;
+        border-radius: 0.5vw; 
+        box-shadow: 0 0.3vw 0.8vw rgba(0, 0, 0, 0.1); 
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        
+        h4{
+            font-size: 1rem;
+        }
+        .discount-image-container{
+            border: 0.1vw solid #c7ccc7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;  /* Align content center horizontally */
+            justify-content: center;  /* Align content center vertically */
+            position: relative; /* Ensure positioning context for absolute elements */
+            padding: 0; /* Remove any unwanted padding */
+            border-radius: 0.5vw 0 0.5vw 0;
+
+            .discount {
+                position: absolute; /* Position the discount text absolutely */
+                top: 0; /* Align to the top */
+                left: 0; /* Align to the left */
+                width: auto; /* Let the width be determined by the text length */
+               
+                width: 55%;
+                background:#F0E3C8; 
+                color: #9b5e5e;
+                border-radius: 0.5vw 0 0.5vw 0;
+                text-align: center;  
+                padding: 0.3vw 0;  
+                margin: 0;  
+                
+            }
+            .item-img{
+                margin-top: 2.5vw;
+                margin-bottom: 1vw;
+                width: 7vw;
+                // padding: 0 2.5vw;
+            }
+        }
+    
+        .price-container{
+            display: flex;
+            flex-direction: row; 
+            justify-content: flex-start;
+            
+            p{
+                font-size: 1.2rem;
+            }
+            .og-price{
+                margin-left: 1vw;
+                color: darkgray;
+                text-decoration: line-through;
+                font-size: 1.2rem;
+            }
+        }
+
+        .addTocart-container{
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            
+            .add-to-cart-btn{
+                flex: 2;
+                background:  white;
+                color: #e6145e;
+                border: 0.2vw solid #e6145e;
+                border-radius:0.2vw ;
+                cursor: pointer;
+  
+                &:hover{
+                  background-color: #e6145e;
+                  color: white;
+                }
+              }
+
+            .fav-btn{
+               // margin-right: 1vw;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                font-size: 1.5rem;
+            }
+
+            .cart-count{
+                flex:2;
+                display: flex;
+                margin-left: 0.4vw;
+                justify-content: space-between;
+
+                .cart-quantity-btn{
+                    padding: 0 1.2vw;
+                    font-size: 1.2rem;
+                    background-color: #F0E3C8;
+                    color: #e6145e;
+                    border-radius: 0.2vw;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                p{
+                    text-align:center;
+                }
+            
+            }
+
+        }
+
+        &:hover {
+            transform: translateY(-0.5vw); 
+            box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.15);  
+        }
+    }
+}
+
+
+
+// /* body.component.scss */
+
+// /* Adjust the galleria container's width */
+// ::ng-deep p-galleria {
+//     display: inline-block;
+//     margin: 0 auto;                  /* Center the gallery */
+//     max-width: 1000px !important;     /* Increased max-width for larger images */
+//     width: 100%;   
+//     margin-left: 5%; 
+//     border-radius: 1vw;                     /* Allow the gallery to take full width */
+// }
+
+// /* Style the image container inside galleria */
+// ::ng-deep p-galleria .p-galleria-item img {
+//     width: 100%;            /* Ensure the image takes the full width of the container */
+//     height: 280px;          /* Fixed height for all images */
+//     object-fit:cover;      /* Ensure images cover the area without distortion */
+//     border-radius: 15px;    /* Optional: rounded corners for images */
+//     margin: 0;              /* Remove any margin */
+// }
+
+// /* Reduce space between the hover indicators and images */
+// ::ng-deep p-galleria .p-galleria-indicators {
+//     margin-top: 5px !important;   /* Adjust the margin between indicators and images */
+//     font-size: 1rem;
+
+// }
+
+// /* Optional: Adjust the hover indicator container (if needed) */
+// ::ng-deep p-galleria .p-galleria-indicator {
+//     margin-bottom: 20px !important;   /* Reduce space above each hover indicator */
+//     padding: 5px !important;      /* Reduce padding around the indicator */
+// }
+
+// /* Style the hover indicator itself */
+// ::ng-deep p-galleria .p-galleria-indicator span {
+//     background-color: rgba(0, 0, 0, 0.3);  /* Optional: change the indicator color */
+// }
+
+// /* Optionally adjust the thumbnail's visibility or layout if necessary */
+// ::ng-deep p-galleria .p-galleria-thumbnail {
+//     padding: 0 !important;   /* Remove padding around thumbnails */
+// }
+
+
+// .fade-in {
+//     opacity: 0;
+//     transition: opacity 1s ease-in-out;
+//   }
+  
+//   /* When the image becomes visible, transition opacity to 1 */
+//   .fade-in.ng-trigger {
+//     opacity: 1;
+//   }

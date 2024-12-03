@@ -1,0 +1,157 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Space between logo, search, and nav */
+    align-items: center;
+    width: 100%;    /* Full width of the page */ 
+    height: 14vh;   /* 10% of the viewport height for header */
+    padding: 1vw 1vw;
+    border-radius: 1vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
+
+    /* Logo container */
+    .logo-container {
+        // margin-top: 5vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // justify-content: space-evenly;
+        margin-right: 1vw;
+        margin-bottom: 0;
+
+        .logo-img {
+            margin-top: 0vw;
+            width: 6vw;  /* Width of the logo */
+            margin-right: 1vw;
+            background-color: none;
+        }
+
+        h3 {
+            display: inline;
+    font-size: 1.5vw;
+    font-weight: bold;  /* Make the text bolder */
+    background: linear-gradient(to right, #d4a5a5, #9b5e5e);
+
+ /* Gradient from yellow, pink, purple to cyan */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    color: transparent; /* Make the text color transparent to show the gradient */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Darker shadow for better contrast with the gradient */
+    letter-spacing: 0.05rem; /* Slightly increase the space between letters for a refined look */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+
+    /* Hover effect */
+    &:hover {
+         /* Keep the same gradient on hover */
+        -webkit-background-clip: text; /* Ensure the background stays clipped to the text */
+        color: transparent; /* Ensure text color is still transparent */
+        transform: scale(1.05); /* Slightly enlarge the text when hovered */
+    }
+        }
+    }
+
+    /* Search container */
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+
+            input {
+                width: 28vw;  /* Set width for the search input */
+                padding: 0.8rem 2.3rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 1rem;
+            }
+
+            .search-icon {
+                position: absolute;
+                left: 0.8rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                pointer-events: none; /* Disable interaction with the icon */
+            }
+        }
+
+        button {
+            margin-left: 1rem; /* Add space between search input and button */
+            padding: 0.8rem 1.5rem;
+            background-color:#F8F0E3; /* Button color (example) */
+            color: #9b5e5e;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+
+            
+        &:hover {
+            background-color: #e1d6d0;
+            border-color: #7f4747;
+          }
+        }
+    }
+    .nav-items{
+        margin-left: 10vw;
+        
+        button{
+            margin-left: 0.3vw;
+            padding: 0.8rem 1.5rem;
+            background-color: #F8F0E3; /* Button color (example) */
+            color: #9b5e5e;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #e1d6d0;
+                border-color: #7f4747;
+              }
+        }    
+    }
+}
+
+.feature-category-container{
+    display: flex;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    max-width: 100%; 
+    padding: 1vw; 
+    scroll-behavior: smooth; 
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    .feature-category-card{
+        display:flex;
+        flex-direction: row;
+        width: 10%;
+        cursor: pointer;
+        
+        .selected-category{
+            background-color: #7f4747;  /* A contrasting green color */
+            color: white;
+            font-weight: bold;
+            border:none  /* Border to further highlight */
+        }
+        
+        p{
+          padding: 1vw;
+          background-color: #F8F0E3;
+          color: #7f4747;
+          font-size: 1rem;
+          margin-left: 1vw;
+          border-radius: 0.4vw;
+          box-shadow: 0 0.2vw 1vw rgba(0, 0, 0, 0.1);
+        }
+    } 
+
+}

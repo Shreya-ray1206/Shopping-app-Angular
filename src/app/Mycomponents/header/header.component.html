@@ -1,0 +1,30 @@
+<div class ="header-container">
+    <div class="logo-container">
+        <img class ="logo-img"src="https://www.citypng.com/public/uploads/preview/hd-round-pink-cloud-aesthetic-instagram-ig-logo-icon-png-701751695119307sn1ewnuctf.png" alt="Logo">
+        <h3>Luxeify</h3>
+    </div>
+    <div class ="search-container">
+        <div class="input-wrapper">
+            <input 
+            type="text" 
+            placeholder="Search.."
+            [(ngModel)] ="searchQuery"(ngModelChange)="onSearchQueryChange()">
+            <img class="search-icon" src="https://img.icons8.com/ios7/600/40C057/search.png" alt="Search Icon">
+        </div>
+        <button (click) ='searchProducts()'>Search</button>
+    </div>
+    <div class="nav-items">
+        <button class="login-btn">Login</button>
+        <button (click) ="redirectToCart()">Cart</button>
+    </div>
+</div>
+<div class="feature-category-container">
+    <div 
+    *ngFor="let category of categories" 
+     class="feature-category-card" 
+     [ngClass]="{'selected-category': category.name === selectedCategory}"
+     (click) ="onSelectCategory(category.name)">
+      <p 
+      [ngClass]="{'selected-category': category.name === selectedCategory}">{{category.name}}</p>
+    </div>
+</div>

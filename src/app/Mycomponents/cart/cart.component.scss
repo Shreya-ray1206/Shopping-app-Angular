@@ -1,0 +1,125 @@
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-left: 12%;
+    justify-items: center;
+
+    .checkout-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color:#413f3f;
+        align-items: center;
+        padding: 0 0.7vw;
+        border-radius: 0.8vw;
+        .savings{
+            color: white;
+        }
+        .checkout-button{
+           background-color: red;
+           color: white;
+           border: none;
+           border-radius: 0.2vw;
+           font-size: 1rem;
+           padding: 0.7vw 5vw;
+        }
+    }
+
+    .heading{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cart-item-container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5vw;
+        height: auto;
+        .cart-item{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.3);
+            padding: 1vw 1.5vw;
+            border-radius: 0.5vw;
+            margin-bottom: 1.5vw;
+            .image-name-container{
+                flex:0.5;
+                display: flex;
+                flex-direction: row;
+                gap: 1.5vw;
+                
+                img{
+                    width: 25%;
+                }
+                .name{
+                    display: flex;
+                    flex-direction: column;
+                    // gap: 0.2vw;
+                    h3{
+                        margin: 0%;
+                    }
+                    .price{
+                        display: flex;
+                        flex-direction: row;
+                        margin:0%;
+                        gap: 1vw;
+                    }
+                }
+            }
+
+            .quantity-other{
+                flex:0.4;
+                display: flex;
+                flex-direction: column;
+
+                .quantity-container{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center; 
+                    gap: 1vw; 
+                    margin-left: 2vw;
+                    margin-top: 0.5vw; 
+
+                    button{
+                        padding: 0.2vw 0.7vw; 
+                        height: 2vw; 
+                        font-size: 1.2rem; 
+                        border: 1px solid #ccc;
+                        border-radius: 0.3vw;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center; 
+                        justify-content: center;
+                    }
+                }
+
+                .del-save{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 1vw;
+                    margin-top: 0.5vw;
+                    align-items: center; 
+
+                    button{
+                        padding: 0.5vw 1vw; 
+                        height: auto; 
+                        font-size: 0.6rem;
+                        border: 1px solid #ccc;
+                        border-radius: 0.3vw;
+                        cursor: pointer;
+                    }
+                }
+
+                .total{
+                  flex:0.4;
+                  font-size: 1.2rem;
+                  display: flex;
+                  justify-content: center;
+                }
+            }
+        }
+    }
+}

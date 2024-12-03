@@ -1,0 +1,76 @@
+<div class="product-detail-main-container" *ngIf="product">
+  <div class="images-short-details">
+    <div class="image-container">
+      <div class="image-col" *ngIf="product">
+          <img *ngFor="let image of product.images" class="image-click" [src]="image"/>
+         
+      </div>
+      <div class="image-show" *ngIf="product">
+          <img [src]="product.thumbnail" [alt]="product.title"/>
+      </div>
+    </div>
+    <div class="product-detail-conatiner" *ngIf="product">
+      <div class="name-rating">
+          <button class="brand-name">{{product.brand}}</button>
+          <h2 class="product-name">{{product.title}}</h2>
+          <div class ="review-ratings">
+            <p class="rating">{{product.rating}} ⭐</p>
+            <p class="reviews">{{ product.reviews?.length }} Ratings and {{ product.reviews?.length }} Reviews</p>
+          </div>
+      </div>
+      <div class="price-info">
+          <p class="price-mrp">MRP : {{ product.price | currency }}</p>
+          <p class="price-og">Price : {{ product.price - (product.price * product.discountPercentage / 100) | currency }}</p>
+          <p class="discount">You saved {{ product.discountPercentage }}%</p>
+          <p>(inclusive of all taxes)</p>
+      </div>
+      <div class="add-btn-delivery">
+         <div class="buttons">
+          <button  *ngIf="!cart[product.id]" (click) = "addToCartBtn(product)" class="add-to-cart-btn">Add To Cart</button>
+          <div class ="cart-count" *ngIf="cart[product.id]">
+            <button (click) ="decrementQuantity(product)" class="cart-quantity-btn" >-</button>
+            <p>{{ cart[product.id].quantity }}</p>
+            <button (click) = "incrementQuantity(product)" class="cart-quantity-btn" >+</button>
+          </div>
+          <button>❤️ Save For Later </button>
+         </div>
+         <p>🛵 Earliest : Get it in 2 hrs</p>
+      </div>
+    </div>
+  </div>
+  <div class ="product-descrition-container">
+    <h2>{{product.title}} Description</h2>
+    <div class="descritption-other-info">
+      <div class ="discription">
+        <h3>About the product</h3>
+        <p>{{product.description}}</p>
+      </div>
+      <hr/>
+      <div class ="other-info">
+        <h3>Other Product Info</h3>
+        <ul>
+          <li>Weigth : {{ product.weight }}</li>
+          <li>Warranty Information : {{product.warrantyInformation }}</li>
+          <li>Shipping Info : {{ product.shippingInformation }}</li>
+          <li>Availability Status : {{ product.stock }}</li>
+          <li>Dimensions : 
+            <ol>
+              <li>Width : {{ product.dimensions?.[0]?.width }} cm</li>
+              <li>Height : {{ product.dimensions?.[0]?.height }} cm</li>
+              <li>Depth : {{ product.dimensions?.[0]?.depth }} cm</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class ="rating-review-container">
+    <div class="rating-container">
+      <h1>{{ rating }} ⭐</h1>
+      <h3>{{ totalRating}} Ratings & 5 Reviews</h3>
+      <div class="rating-graph">
+        <p-chart type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<!-- <div class="body-container">
+    <div class ="image-container">
+        <img [src]="imageArray[currentImageIndex]"/>
+    </div>
+    <h2>Grab the deal!</h2>
+    <div class="item-container">
+      <div class="shimmer-wrapper">
+        <app-shimmerui></app-shimmerui>
+      </div>
+      <div 
+        class="item-card" 
+        *ngFor="let product of productsList" 
+        (click)="viewProductDetails(product.id)">
+        <div class="discount-image-container">
+          <p class="discount">{{product.discountPercentage}}% OFF</p>
+          <img class="item-img" [src]="product.thumbnail" alt="{{ product.title }}"/>
+        </div>
+        <h4>{{product.title}}</h4>
+        <div class="price-container">
+          <p> $ {{ (product.discountPercentage / 100) * product.price | number:'1.2-2' }}</p>
+          <p class="og-price">$ {{product.price}}</p>
+        </div>
+        <p>{{product.rating}}⭐</p>
+        <div class="addTocart-conatiner">
+          <button class="fav-btn">❤️</button>
+          <button class="add-to-cart-btn">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+   <div class="body-container">
+    <div class="image-container">
+      <img [src]="imageArray[currentImageIndex]" alt="Image slider" />
+    </div>
+    <h2>Grab the deal!</h2>
+  
+    <!-- Items Section -->
+    <div class="item-container">
+      <!-- Shimmer Wrapper -->
+      <div class="shimmer-wrapper" *ngIf="loading">
+        <app-shimmerui></app-shimmerui>
+      </div>
+
+      <!-- Message when no products are available -->
+      <div *ngIf="!loading && productsList.length === 0" class="no-products-container">
+        <p>No products available</p>
+      </div>
+  
+      <!-- Product Cards -->
+      <div class="item-grid" *ngIf="!loading && productsList.length > 0">
+        <div
+          class="item-card"
+          *ngFor="let product of productsList"
+          (click)="viewProductDetails(product.id)"
+        >
+          <div class="discount-image-container">
+            <p class="discount">{{ product.discountPercentage }}% OFF</p>
+            <img
+              class="item-img"
+              [src]="product.thumbnail"
+              alt="{{ product.title }}"
+            />
+          </div>
+          <h4>{{ product.title }}</h4>
+          <div class="price-container">
+            <p>
+              $ {{
+                (product.discountPercentage / 100) * product.price
+                  | number: '1.2-2'
+              }}
+            </p>
+            <p class="og-price">$ {{ product.price }}</p>
+          </div>
+          <p>{{ product.rating }}⭐</p>
+          <div class="addTocart-container">
+            <button class="fav-btn">❤️</button>
+            <button class="add-to-cart-btn" 
+            (click)="addToCart(product,$event)"
+            *ngIf="!cart[product.id]"
+            >Add To Cart</button>
+            <div class ="cart-count" *ngIf="cart[product.id]">
+              <button (click) = "decrementQuantity(product, $event)" class="cart-quantity-btn" >-</button>
+              <p>{{ cart[product.id].quantity }}</p>
+              <button (click) = "incrementQuantity(product, $event)" class="cart-quantity-btn" >+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
