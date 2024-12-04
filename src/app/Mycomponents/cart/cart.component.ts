@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [ CommonModule, DialogModule, ButtonModule],
+  imports: [ CommonModule, DialogModule, ButtonModule, FormsModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -14,7 +15,10 @@ export class CartComponent {
    cartItems : any = [];
    cart : any={};
    visible: boolean = false;
-
+   address: string = '';
+   city: string = '';
+   postalCode: string = '';
+   phoneNumber: string = '';
    ngOnInit(): void{
 
     let storedItem = JSON.parse(localStorage.getItem('cart') || '{}');
