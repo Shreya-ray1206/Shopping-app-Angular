@@ -4,10 +4,12 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 
+import { FloatLabelModule } from 'primeng/floatlabel';
+
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [ CommonModule, DialogModule, ButtonModule, FormsModule],
+  imports: [ CommonModule, DialogModule, ButtonModule, FormsModule, FloatLabelModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

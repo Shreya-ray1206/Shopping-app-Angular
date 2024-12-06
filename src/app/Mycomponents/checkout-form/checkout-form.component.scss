@@ -1,0 +1,217 @@
+.checkout-container{
+    .checkout-header{
+        display: flex;
+        justify-content: space-around;
+        .logo-container {
+            // margin-top: 5vw;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            // justify-content: space-evenly;
+            margin-right: 1vw;
+            margin-bottom: 0;
+    
+            .logo-img {
+                margin-top: 0vw;
+                width: 6vw;  /* Width of the logo */
+                margin-right: 1vw;
+                background-color: none;
+            }
+    
+            h3 {
+                display: inline;
+        font-size: 1.5vw;
+        font-weight: bold;  /* Make the text bolder */
+        background: linear-gradient(to right, #d4a5a5, #9b5e5e);
+    
+     /* Gradient from yellow, pink, purple to cyan */
+        -webkit-background-clip: text; /* Clip the background to the text */
+        color: transparent; /* Make the text color transparent to show the gradient */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Darker shadow for better contrast with the gradient */
+        letter-spacing: 0.05rem; /* Slightly increase the space between letters for a refined look */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+    
+        /* Hover effect */
+        &:hover {
+             /* Keep the same gradient on hover */
+            -webkit-background-clip: text; /* Ensure the background stays clipped to the text */
+            color: transparent; /* Ensure text color is still transparent */
+            transform: scale(1.05); /* Slightly enlarge the text when hovered */
+        }
+            }
+        }
+        button{
+            height: 3vw;
+            font-size: 1.2vw; 
+            padding: 0.1vw 1.5vw; 
+            align-self: center; 
+            background-color: #f11717;
+            border: none;
+            border-radius: 0.5vw;
+            color: #f0f0f0;
+        }
+    }
+    .checkout-content{
+        display: flex;
+        justify-content: center;
+        margin-left: 10%;
+        width: 70%;
+        .left-side{
+            flex:2;
+            display: flex;
+            flex-direction: column;
+            .address-container{
+                box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+                padding: 1vw;
+                border-radius: 0.3vw;
+                display: block; 
+              .address-title-changebtn{
+                display :flex;
+                justify-content: space-between;
+                 h2{
+                    margin:0;
+                 }
+                 button{
+                    padding: 0.5vw 1vw;
+                    background-color: #fff74b;
+                    color: black;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 0.2vw;
+                 }    
+               }
+
+               .address-selection{
+                margin-top: 6%;
+
+                .address-option{
+                    input{
+                        margin-bottom: 2%;
+                    }
+                    label{
+                        margin-left: 2%;
+                    }
+                }
+                .address-btn{
+                    padding: 0.5vw 1vw;
+                    background-color: #fff74b;
+                    color: black;
+                    border: none;
+                    border-radius: 0.3vw;
+                    margin-left: 0.6vw;
+                    cursor: pointer;
+                }
+              }
+            }
+
+            .payment-container{
+                box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+                padding: 0.6vw;
+                height: auto;
+       
+                .payment-method{
+                    margin-left:5%;
+                    margin-bottom: 1vw;
+                    padding: 1vw 1.5vw;
+                    border-radius: 0.5vw;
+                    // :hover{
+                    //     background-color: #faedd6;
+                    //     padding: 1vw 1.5vw;
+
+                    // }
+                    input{
+                        margin-bottom: 1vw;
+                    }
+                    .payment-details{
+                        margin-left: 5%;
+                        .card-images{
+                            img{
+                             width: 20vw;
+                            }
+                        }
+                        .add-card-btn{
+                            width: 15vw;
+                            padding: 0.6vw 1vw;
+                            background-color: #f11717;
+                            border-radius: 0.5vw;
+                            margin-top: 1vw;
+                            border: none;
+                            color: white;
+                            font-size: 1rem;
+                        }
+                        select{
+                            padding: 0.6vw 1.2vw;
+                            font-size: 1rem;
+                        }
+                        .upi-input{
+                            width: 15vw;
+                            padding: 0.6vw 1.2vw;
+                            margin-right: 1.5vw;
+                        }
+
+                        .verify-btn{
+                            width: 15vw;
+                            padding: 0.6vw 1.2vw;
+                            background-color: #f11717;
+                            border-radius: 0.5vw;
+                            border: none;
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            .arriving-container{
+                margin-top: 5%;
+                box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+                padding: 1vw 1.5vw;
+                .product-card{
+                    padding: 1vw 1.5vw;
+                    border-radius: 0.2vw;
+                    border: 0.2vw solid #f0f0f0;
+
+                    .img-desc{
+                        display: flex;
+                        justify-content: space-between;
+
+                       .arriving-product-img{
+                        width: 10vw;
+                        height: auto;
+                       }
+                    }
+                }
+            }
+        }
+        .right-side{
+            flex:1;
+            margin-left: 1.5vw;
+            box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+            height: 50%;
+            .subtotal-container{
+              display: flex;
+              flex-direction: column;
+              padding: 1vw 1.5vw;
+
+              button{
+                padding: 0.5vw 1vw;
+                background-color: #fff74b;
+                color: black;
+                border: none;
+                cursor: pointer;
+                border-radius: 0.2vw;
+              }
+
+              .item-details{
+                display: flex;
+                flex-direction: column;
+
+                .info{
+                    display:flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+              }
+            }
+        }
+    }
+}
