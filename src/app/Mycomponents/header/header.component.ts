@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchService } from '../../services/search.services';
+import { HeaderVisibilityService } from '../../services/header-visibility.services';
 
 
 @Component({
@@ -25,9 +26,18 @@ export class HeaderComponent {
     private http: HttpClient,
     private searchService: SearchService,
     private router: Router,
+    private headerVisibilityService: HeaderVisibilityService
   ) {
     this.fetchCategories();
     this.fetchInitialProducts();
+  }
+  
+  showHeader :boolean = true;
+  
+  ngOnInit(){
+    this.headerVisibilityService.showHeader$.subscribe((visibility) => {
+      this.showHeader = visibility;
+      });
   }
 
   fetchInitialProducts(): void {

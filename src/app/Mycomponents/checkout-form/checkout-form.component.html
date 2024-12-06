@@ -1,0 +1,118 @@
+<div class ="checkout-container">
+    <div class="checkout-header">
+        <div class="logo-container">
+            <!-- <img class ="logo-img"src="https://www.citypng.com/public/uploads/preview/hd-round-pink-cloud-aesthetic-instagram-ig-logo-icon-png-701751695119307sn1ewnuctf.png" alt="Logo"> -->
+            <h3>Luxeify</h3>
+        </div>
+        <h1>Checkout</h1>
+        <button
+        (click) ="redirectToCart()">Cart</button>
+    </div>
+    <div class="checkout-content">
+        <div class="left-side">
+            <div class ="address-container">
+               <div class="address-title-changebtn">
+                <h2>Delivery to Shreya</h2>
+                <button 
+                *ngIf="!isAddressChangeActive"
+                (click)="toggleAddressChange()">Change</button>
+               </div>
+               <p *ngIf="!isAddressChangeActive">{{selectedAddress}}</p>
+
+               <!-- If change is clicked  -->
+               <div *ngIf="isAddressChangeActive" class="address-selection">
+                <div *ngFor="let address of addresses; let i = index" class="address-option">
+                    <input 
+                        type="radio" 
+                        [id]="'address-' + i" 
+                        name="address" 
+                        [value]="address" 
+                        [(ngModel)]="selectedAddress" />
+                    <label [for]="'address-' + i">{{ address }}</label>
+                </div>
+                <button class ="address-btn" (click)="confirmAddressChange()">Confirm</button>
+                <button  class ="address-btn"(click)="addNewAddress()">Add New Address</button>
+            </div>
+            </div>
+            <div class ="payment-container">
+                <h2>Payment Method</h2>
+                <div class="payments-options">
+                    <div class="payment-method">
+                        <input type="radio" id="credit-card" name="payment-method"  (change)="onSelectPaymentMethod('credit-card')"/>
+                        <label for="credit-card">Credit/Debit Card</label>
+                        <div class="payment-details">
+                            <div class="card-images">
+                                <img src="https://banner2.cleanpng.com/20180604/wby/aa9najq9f.webp" alt="Visa" />
+                            </div>
+                            <button class="add-card-btn" *ngIf="selectMethod === 'credit-card'">+ Add Card</button>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="emi" name="payment-method" (change)="onSelectPaymentMethod('emi')" />
+                        <label for="emi">EMI</label>
+                        <div class="payment-details" *ngIf="selectMethod === 'emi'">
+                            <button class="add-card-btn">+ Add EMI Card</button>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="net-banking" name="payment-method" (change)="onSelectPaymentMethod('net-banking')" />
+                        <label for="net-banking">Net Banking</label>
+                        <div class="payment-details" *ngIf="selectMethod === 'net-banking'">
+                            <select>
+                                <option>Select Your Bank</option>
+                                <option>State Bank of India</option>
+                                <option>ICICI Bank</option>
+                                <option>HDFC Bank</option>
+                                <option>Axis Bank</option>
+                                <!-- Add more banks as needed -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="upi" name="payment-method" (change)="onSelectPaymentMethod('upi')" />
+                        <label for="upi">UPI ID</label>
+                        <div class="payment-details" *ngIf="selectMethod === 'upi'">
+                            <input class="upi-input" type="text" placeholder="Enter UPI ID" />
+                            <button class="verify-btn">Verify</button>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <input type="radio" id="cod" name="payment-method" (change)="onSelectPaymentMethod('cod')" />
+                        <label for="cod">Cash on Delivery</label>
+                        <div class="payment-details" *ngIf="selectMethod === 'cod'">
+                            <p>Pay when the product is delivered to your doorstep.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class ="arriving-container">
+                <div class="product-card">
+                    <h3>Arring 6 Dec 2024</h3>
+                    <div class="img-desc">
+                        <img  class ="arriving-product-img"src ="https://m.media-amazon.com/images/I/61Sy9tqkmcL._AC_AA135_.jpg"/>
+                        <p>Optimum Nutrition (ON) Gold Standard 100% Plant Protein - 20 Serve, 684 g (Double Rich Chocolate), Vegan, Complete Amino Acid Profile, Zero Added Sugars, Gluten-Free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class ="right-side">
+            <div class="subtotal-container">
+                <button>Select Payment Method</button>
+                <div class = "item-details">
+                    <div class ="info">
+                        <p>Items : </p>
+                        <p>$ 30:00</p>
+                    </div>
+                    <div class ="info">
+                        <p>Delivery : </p>
+                        <p>$ 1:00</p>
+                    </div>
+                    <div class ="info">
+                        <p class ="tag">Order Total : </p>
+                        <p class ="tag">$ 31:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

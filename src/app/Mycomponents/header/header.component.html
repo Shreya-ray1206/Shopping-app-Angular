@@ -1,4 +1,4 @@
-<div class ="header-container">
+<div *ngIf="showHeader" class ="header-container">
     <div class="logo-container">
         <img class ="logo-img"src="https://www.citypng.com/public/uploads/preview/hd-round-pink-cloud-aesthetic-instagram-ig-logo-icon-png-701751695119307sn1ewnuctf.png" alt="Logo">
         <h3>Luxeify</h3>
@@ -18,7 +18,7 @@
         <button (click) ="redirectToCart()">Cart</button>
     </div>
 </div>
-<div class="feature-category-container">
+<div *ngIf="showHeader"  class="feature-category-container">
     <div 
     *ngFor="let category of categories" 
      class="feature-category-card" 

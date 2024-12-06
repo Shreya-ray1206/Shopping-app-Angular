@@ -5,6 +5,8 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { Router } from '@angular/router';
+import { HeaderVisibilityService } from '../../services/header-visibility.services';
 
 @Component({
   selector: 'app-cart',
@@ -21,27 +23,33 @@ export class CartComponent {
    city: string = '';
    postalCode: string = '';
    phoneNumber: string = '';
-   ngOnInit(): void{
 
+   constructor(
+    private router: Router,
+    private headerVisibilityService: HeaderVisibilityService
+   ) {}
+   ngOnInit(): void{
+ 
+    
     let storedItem = JSON.parse(localStorage.getItem('cart') || '{}');
     this.cart = storedItem;
 
-    console.log('Cart items in localStorage:', JSON.stringify(storedItem));
+    // console.log('Cart items in localStorage:', JSON.stringify(storedItem));
     this.cartItems = Object.values(this.cart);
-    console.log('Cart Items:', JSON.stringify(this.cartItems)); 
+    // console.log('Cart Items:', JSON.stringify(this.cartItems)); 
 
     this.calculateTheSubtotal()
    }
 
    calculateTheSubtotal() {
     let total = this.cartItems.reduce((acc:number, item:any) => acc + (item.price * item.quantity), 0);
-    console.log('Calculated subtotal:', total);
+    // console.log('Calculated subtotal:', total);
     return total;
    }
 
    calculateTheSavings() : number {
     let savings = this.cartItems.reduce((acc:number, item:any) => acc + (item.price * item.quantity * (item.discountPercentage/100)), 0);
-    console.log(`Discount - ${savings}`)
+    // console.log(`Discount - ${savings}`)
     return savings
    }
 
@@ -75,12 +83,18 @@ export class CartComponent {
 
    saveForLater(item:any) :void{
     ///For now just deleted the item 
-    console.log('Item saved for later:', item);
+    // console.log('Item saved for later:', item);
     this.deleteItem(item);
    }
 
    showDialog() {
     this.visible = true;
-    console.log('Dialog visibility set to true');
+    // console.log('Dialog visibility set to true');
+   }
+
+   onCheckout() {
+    console.log('Checkout button clicked');
+    this.headerVisibilityService.setHeaderVisibility(false);
+    this.router.navigate(['/checkout']);
    }
 }

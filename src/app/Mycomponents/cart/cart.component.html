@@ -6,7 +6,9 @@
             <h4>Savings : ${{calculateTheSavings() | number:'1.2-2'}}</h4>
         </div>
         <!-- <button class="checkout-button">Checkout</button> -->
-        <p-button (onClick)="showDialog()" label="Checkout" />
+        <p-button 
+        (onClick)="onCheckout()" 
+        label="Checkout" />
     </div>
     <div class ="heading">
         <p>Items </p>
