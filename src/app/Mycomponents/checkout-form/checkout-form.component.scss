@@ -186,7 +186,13 @@
             flex:1;
             margin-left: 1.5vw;
             box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
-            height: 50%;
+            height: fit-content;
+            position: sticky;
+            top: 2vw;
+            align-self: flex-start; 
+            background: white;
+            z-index: 1;
+            
             .subtotal-container{
               display: flex;
               flex-direction: column;
@@ -214,4 +220,33 @@
             }
         }
     }
+}
+
+.my-dialog .container {
+    display: flex;
+    align-items: center; /* Vertically align the label and input */
+    gap: 1rem; /* Adds space between the label and the input */
+
+    label {
+        
+        font-size: 1.2vw;
+    }
+
+    input {
+        width: 60% ;
+        height: 2.8vw;
+        margin-right: 10%;
+    }
+}
+
+.my-dialog .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Optional: Adjust spacing */
+}
+
+.my-dialog .save-btn .p-button {
+    background-color: #fff74b; /* Custom background color */
+    border: none; /* Remove any borders */
+    color: black; /* Text color */
 }

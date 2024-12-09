@@ -31,7 +31,7 @@
                     <label [for]="'address-' + i">{{ address }}</label>
                 </div>
                 <button class ="address-btn" (click)="confirmAddressChange()">Confirm</button>
-                <button  class ="address-btn"(click)="addNewAddress()">Add New Address</button>
+                <button  class ="address-btn" (click)="showDialog()">Add New Address</button>
             </div>
             </div>
             <div class ="payment-container">
@@ -86,18 +86,20 @@
                 </div>
             </div>
             <div class ="arriving-container">
-                <div class="product-card">
-                    <h3>Arring 6 Dec 2024</h3>
+                <div  *ngFor="let item of cart" class="product-card">
+                    <h3>Arring 20 Dec 2024</h3>
                     <div class="img-desc">
-                        <img  class ="arriving-product-img"src ="https://m.media-amazon.com/images/I/61Sy9tqkmcL._AC_AA135_.jpg"/>
-                        <p>Optimum Nutrition (ON) Gold Standard 100% Plant Protein - 20 Serve, 684 g (Double Rich Chocolate), Vegan, Complete Amino Acid Profile, Zero Added Sugars, Gluten-Free.</p>
+                        <img  class ="arriving-product-img" [src] ="item.thumbnail"/>
+                        <p>{{item.description}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class ="right-side">
             <div class="subtotal-container">
-                <button>Select Payment Method</button>
+                <button *ngIf="selectMethod">Generate Invoice and Payment</button>
+                <button *ngIf="!selectMethod" disabled>Select Payment Method</button> <!-- Disabled until a method is selected -->
+        
                 <div class = "item-details">
                     <div class ="info">
                         <p>Items : </p>
@@ -116,3 +118,19 @@
         </div>
     </div>
 </div>
+
+<p-dialog 
+   header="Add New Address" 
+   [modal]="true" 
+   [(visible)]="visible" 
+   [style]="{ width: '28rem' }"
+   class="my-dialog">
+    <div class="flex align-items-center gap-3 mb-3 container">
+      <label for="username" class="font-semibold w-6rem">Full Address</label>
+      <input pInputText id="username" class="flex-auto" [(ngModel)]="newAddress" autocomplete="off" />
+    </div>
+    <div class="flex justify-content-end gap-2 buttons" >
+      <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+      <p-button class = "save-btn" label="Save" (onClick)="saveNewAddress()" />
+    </div>
+  </p-dialog>

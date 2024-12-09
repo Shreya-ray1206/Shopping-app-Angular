@@ -43,7 +43,7 @@ export class HeaderComponent {
   fetchInitialProducts(): void {
     this.searchService.fetchInitialProducts().subscribe({
       next: (data) => {
-        this.productList = data.products;  // Assuming 'products' is the key in response
+        this.productList = data.products;  
         this.originalProductList = [...this.productList];
         console.log('Fetched products:', this.productList);
       },
